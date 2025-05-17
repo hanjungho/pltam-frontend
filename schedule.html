@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일정 - 플탐</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+</head>
+<body>
+    <!-- 헤더 포함 -->
+    <div id="header-container"></div>
+    
+    <main>
+        <!-- 일정 배너 -->
+        <section class="schedule-banner">
+            <div class="container">
+                <h1>나의 일정 관리</h1>
+                <p>수업, 모임, 개인 일정을 한눈에 관리하세요.</p>
+            </div>
+        </section>
+        
+        <!-- 일정 관리 섹션 -->
+        <section class="schedule-section">
+            <div class="container">
+                <div class="schedule-container">
+                    <!-- 사이드바 -->
+                    <div class="schedule-sidebar">
+                        <div class="user-profile">
+                            <img src="/placeholder.svg?height=80&width=80" alt="프로필 사진" class="profile-pic">
+                            <h3>사용자님의 일정</h3>
+                        </div>
+                        
+                        <div class="schedule-filters">
+                            <h4>일정 필터</h4>
+                            <div class="filter-item">
+                                <input type="checkbox" id="filterClass" checked>
+                                <label for="filterClass">
+                                    <span class="color-dot" style="background-color: #4CAF50;"></span>
+                                    수업
+                                </label>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="filterMoim" checked>
+                                <label for="filterMoim">
+                                    <span class="color-dot" style="background-color: #2196F3;"></span>
+                                    모임
+                                </label>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="filterPersonal" checked>
+                                <label for="filterPersonal">
+                                    <span class="color-dot" style="background-color: #FF9800;"></span>
+                                    개인 일정
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="upcoming-events">
+                            <h4>다가오는 일정</h4>
+                            <div class="event-list" id="upcomingEventsList">
+                                <!-- 다가오는 일정은 JavaScript로 동적 생성됩니다 -->
+                            </div>
+                        </div>
+                        
+                        <button class="btn-add-event" id="addEventBtn">
+                            <i class="fas fa-plus"></i> 일정 추가
+                        </button>
+                    </div>
+                    
+                    <!-- 캘린더 -->
+                    <div class="schedule-calendar">
+                        <div class="calendar-header">
+                            <div class="calendar-title" id="calendarTitle">2023년 10월</div>
+                            <div class="calendar-actions">
+                                <button class="btn-today" id="todayBtn">오늘</button>
+                                <div class="calendar-nav">
+                                    <button class="btn-prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="btn-next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="calendar-view">
+                                    <button class="btn-view active" data-view="month">월</button>
+                                    <button class="btn-view" data-view="week">주</button>
+                                    <button class="btn-view" data-view="day">일</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 일정 추가 모달 -->
+    <div id="addEventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>일정 추가</h2>
+            <form class="add-event-form">
+                <div class="form-group">
+                    <label for="eventTitle">일정 제목</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventType">일정 유형</label>
+                    <select id="eventType" required>
+                        <option value="class">수업</option>
+                        <option value="moim">모임</option>
+                        <option value="personal">개인 일정</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventStartDate">시작 날짜</label>
+                        <input type="date" id="eventStartDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventStartTime">시작 시간</label>
+                        <input type="time" id="eventStartTime">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventEndDate">종료 날짜</label>
+                        <input type="date" id="eventEndDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventEndTime">종료 시간</label>
+                        <input type="time" id="eventEndTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eventLocation">장소</label>
+                    <input type="text" id="eventLocation">
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">설명</label>
+                    <textarea id="eventDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventColor">색상</label>
+                    <select id="eventColor">
+                        <option value="#4CAF50">초록색 (수업)</option>
+                        <option value="#2196F3">파란색 (모임)</option>
+                        <option value="#FF9800">주황색 (개인 일정)</option>
+                        <option value="#9C27B0">보라색</option>
+                        <option value="#F44336">빨간색</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="eventAllDay">
+                        종일
+                    </label>
+                </div>
+                <button type="submit" class="btn-submit">일정 추가</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 일정 상세 모달 -->
+    <div id="eventDetailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="event-detail-header">
+                <h2 id="detailTitle">일정 제목</h2>
+                <div class="event-type" id="detailType">수업</div>
+            </div>
+            <div class="event-detail-content">
+                <div class="detail-item">
+                    <i class="fas fa-calendar"></i>
+                    <span id="detailDate">2023년 10월 15일</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <span id="detailTime">오후 2:00 - 오후 4:00</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="detailLocation">서울 강남구</span>
+                </div>
+                <div class="detail-description" id="detailDescription">
+                    일정 설명이 여기에 표시됩니다.
+                </div>
+            </div>
+            <div class="event-detail-actions">
+                <button class="btn-edit-event" id="editEventBtn">수정</button>
+                <button class="btn-delete-event" id="deleteEventBtn">삭제</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 푸터 포함 -->
+    <div id="footer-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="js/schedule.js"></script>
+    <script>
+        // 헤더와 푸터 로드
+        document.addEventListener('DOMContentLoaded', function() {
+            // 헤더 로드
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                    
+                    // 헤더 스크립트 로드
+                    const headerScript = document.createElement('script');
+                    headerScript.src = 'js/header.js';
+                    document.body.appendChild(headerScript);
+                });
+                
+            // 푸터 로드
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

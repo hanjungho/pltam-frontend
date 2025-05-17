@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플탐 - 취미 기반 커뮤니티 및 교육 매칭 플랫폼</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/placeholder.svg?height=40&width=120" alt="플탐 로고">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">수업</a>
+                        <div class="dropdown-menu two-column">
+                            <div class="dropdown-column">
+                                <a href="#" class="dropdown-item">운동/스포츠</a>
+                                <a href="#" class="dropdown-item">아웃도어/여행</a>
+                                <a href="#" class="dropdown-item">음악/악기</a>
+                                <a href="#" class="dropdown-item">언어/외국어</a>
+                                <a href="#" class="dropdown-item">공예/만들기</a>
+                                <a href="#" class="dropdown-item">댄스/무용</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <a href="#" class="dropdown-item">요리/제빵</a>
+                                <a href="#" class="dropdown-item">문화/예술</a>
+                                <a href="#" class="dropdown-item">사진/영상</a>
+                                <a href="#" class="dropdown-item">디자인/미술</a>
+                                <a href="#" class="dropdown-item">직무/커리어</a>
+                                <a href="#" class="dropdown-item">컴퓨터/IT</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">모임</a>
+                        <div class="dropdown-menu two-column">
+                            <div class="dropdown-column">
+                                <a href="#" class="dropdown-item">운동/스포츠</a>
+                                <a href="#" class="dropdown-item">아웃도어/여행</a>
+                                <a href="#" class="dropdown-item">음악/악기</a>
+                                <a href="#" class="dropdown-item">언어/외국어</a>
+                                <a href="#" class="dropdown-item">공예/만들기</a>
+                                <a href="#" class="dropdown-item">댄스/무용</a>
+                                <a href="#" class="dropdown-item">봉사활동</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <a href="#" class="dropdown-item">요리/제빵</a>
+                                <a href="#" class="dropdown-item">문화/예술</a>
+                                <a href="#" class="dropdown-item">사진/영상</a>
+                                <a href="#" class="dropdown-item">디자인/미술</a>
+                                <a href="#" class="dropdown-item">직무/커리어</a>
+                                <a href="#" class="dropdown-item">컴퓨터/IT</a>
+                                <a href="#" class="dropdown-item">자기계발</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">커뮤니티</a>
+                        <div class="dropdown-menu two-column">
+                            <div class="dropdown-column">
+                                <a href="#" class="dropdown-item">운동/스포츠</a>
+                                <a href="#" class="dropdown-item">아웃도어/여행</a>
+                                <a href="#" class="dropdown-item">음악/악기</a>
+                                <a href="#" class="dropdown-item">언어/외국어</a>
+                                <a href="#" class="dropdown-item">공예/만들기</a>
+                                <a href="#" class="dropdown-item">댄스/무용</a>
+                                <a href="#" class="dropdown-item">봉사활동</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <a href="#" class="dropdown-item">요리/제빵</a>
+                                <a href="#" class="dropdown-item">문화/예술</a>
+                                <a href="#" class="dropdown-item">사진/영상</a>
+                                <a href="#" class="dropdown-item">디자인/미술</a>
+                                <a href="#" class="dropdown-item">직무/커리어</a>
+                                <a href="#" class="dropdown-item">컴퓨터/IT</a>
+                                <a href="#" class="dropdown-item">자기계발</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">일정</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-search" id="searchBtn"><i class="fas fa-search"></i></button>
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-login" id="loginBtn">로그인</button>
+                    <button class="btn-signup" id="signupBtn">회원가입</button>
+                </div>
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <img src="/placeholder.svg?height=40&width=40" alt="프로필 사진" class="profile-pic">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 검색 모달 -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>검색</h2>
+            <form class="search-form">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-input">
+                <button type="submit" class="search-button">검색</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 로그인 모달 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>로그인</h2>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="loginEmail">이메일</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">비밀번호</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-submit">로그인</button>
+                <div class="social-login">
+                    <p>소셜 계정으로 로그인</p>
+                    <div class="social-buttons">
+                        <button type="button" class="btn-social btn-google">Google</button>
+                        <button type="button" class="btn-social btn-naver">Naver</button>
+                        <button type="button" class="btn-social btn-kakao">Kakao</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 회원가입 모달 -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>회원가입</h2>
+            <form class="signup-form">
+                <div class="form-group">
+                    <label for="signupEmail">이메일</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">비밀번호</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPasswordConfirm">비밀번호 확인</label>
+                    <input type="password" id="signupPasswordConfirm" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupName">이름</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <button type="submit" class="btn-submit">회원가입</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 채팅 도우미 -->
+    <div class="chat-helper" id="chatHelper">
+        <button class="chat-button" id="chatButton">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-container" id="chatContainer" style="display: none;">
+            <div class="chat-header">
+                <h3>채팅</h3>
+                <button class="close-chat">&times;</button>
+            </div>
+            <div class="chat-rooms">
+                <div class="chat-room ai-helper">
+                    <img src="/placeholder.svg?height=40&width=40" alt="AI 도우미" class="chat-avatar">
+                    <div class="chat-info">
+                        <h4>플탐 AI 도우미</h4>
+                        <p>무엇을 도와드릴까요?</p>
+                    </div>
+                </div>
+                <div class="chat-room">
+                    <img src="/placeholder.svg?height=40&width=40" alt="채팅방" class="chat-avatar">
+                    <div class="chat-info">
+                        <h4>운동/스포츠 모임</h4>
+                        <p>새 메시지: 오늘 모임 어떠세요?</p>
+                    </div>
+                </div>
+                <div class="chat-room">
+                    <img src="/placeholder.svg?height=40&width=40" alt="채팅방" class="chat-avatar">
+                    <div class="chat-info">
+                        <h4>요리 클래스</h4>
+                        <p>새 메시지: 다음 수업 일정 안내</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/header.js"></script>
+</body>
+</html>

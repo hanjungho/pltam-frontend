@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수업 - 플탐</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/class.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 포함 -->
+    <div id="header-container"></div>
+    
+    <main>
+        <!-- 수업 배너 -->
+        <section class="class-banner">
+            <div class="container">
+                <h1>나에게 맞는 수업 찾기</h1>
+                <p>다양한 분야의 전문가에게 배우는 맞춤형 수업을 찾아보세요.</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="배우고 싶은 수업을 검색해보세요">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 필터 섹션 -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>카테고리</label>
+                        <select id="categoryFilter">
+                            <option value="">전체</option>
+                            <option value="운동/스포츠">운동/스포츠</option>
+                            <option value="아웃도어/여행">아웃도어/여행</option>
+                            <option value="음악/악기">음악/악기</option>
+                            <option value="언어/외국어">언어/외국어</option>
+                            <option value="공예/만들기">공예/만들기</option>
+                            <option value="요리/제빵">요리/제빵</option>
+                            <option value="문화/예술">문화/예술</option>
+                            <option value="사진/영상">사진/영상</option>
+                            <option value="디자인/미술">디자인/미술</option>
+                            <option value="직무/커리어">직무/커리어</option>
+                            <option value="컴퓨터/IT">컴퓨터/IT</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>지역</label>
+                        <select id="locationFilter">
+                            <option value="">전체</option>
+                            <option value="서울">서울</option>
+                            <option value="경기">경기</option>
+                            <option value="인천">인천</option>
+                            <option value="부산">부산</option>
+                            <option value="대구">대구</option>
+                            <option value="대전">대전</option>
+                            <option value="광주">광주</option>
+                            <option value="온라인">온라인</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>수업 형태</label>
+                        <select id="typeFilter">
+                            <option value="">전체</option>
+                            <option value="그룹">그룹</option>
+                            <option value="1:1">1:1</option>
+                            <option value="원데이">원데이</option>
+                            <option value="정기">정기</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>난이도</label>
+                        <select id="levelFilter">
+                            <option value="">전체</option>
+                            <option value="입문">입문</option>
+                            <option value="초급">초급</option>
+                            <option value="중급">중급</option>
+                            <option value="고급">고급</option>
+                        </select>
+                    </div>
+                    <button class="btn-filter-apply">적용</button>
+                </div>
+                
+                <div class="filter-tags" id="filterTags">
+                    <!-- 선택된 필터 태그가 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- 수업 목록 -->
+        <section class="class-list-section">
+            <div class="container">
+                <div class="class-header">
+                    <h2>수업 목록</h2>
+                    <div class="class-sort">
+                        <label>정렬:</label>
+                        <select id="sortOption">
+                            <option value="recommended">추천순</option>
+                            <option value="popular">인기순</option>
+                            <option value="recent">최신순</option>
+                            <option value="price_low">가격 낮은순</option>
+                            <option value="price_high">가격 높은순</option>
+                            <option value="rating">평점순</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="class-grid" id="classGrid">
+                    <!-- 수업 카드 예시 -->
+                    <div class="class-card" data-category="음악/악기" data-location="서울" data-type="그룹" data-level="입문">
+                        <div class="class-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="수업 이미지">
+                            <span class="class-tag">인기</span>
+                        </div>
+                        <div class="class-content">
+                            <h3>초보자를 위한 기타 클래스</h3>
+                            <p class="class-info"><i class="fas fa-map-marker-alt"></i> 서울 강남구</p>
+                            <p class="class-info"><i class="fas fa-user"></i> 홍길동 강사</p>
+                            <div class="class-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5 (120)</span>
+                            </div>
+                            <p class="class-price">50,000원 / 회</p>
+                            <button class="btn-class-detail">자세히 보기</button>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card" data-category="요리/제빵" data-location="서울" data-type="원데이" data-level="초급">
+                        <div class="class-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="수업 이미지">
+                            <span class="class-tag">신규</span>
+                        </div>
+                        <div class="class-content">
+                            <h3>홈 베이킹 마스터 클래스</h3>
+                            <p class="class-info"><i class="fas fa-map-marker-alt"></i> 서울 마포구</p>
+                            <p class="class-info"><i class="fas fa-user"></i> 김베이커 강사</p>
+                            <div class="class-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0 (85)</span>
+                            </div>
+                            <p class="class-price">60,000원 / 회</p>
+                            <button class="btn-class-detail">자세히 보기</button>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card" data-category="운동/스포츠" data-location="서울" data-type="그룹" data-level="중급">
+                        <div class="class-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="수업 이미지">
+                        </div>
+                        <div class="class-content">
+                            <h3>주말 테니스 레슨</h3>
+                            <p class="class-info"><i class="fas fa-map-marker-alt"></i> 서울 송파구</p>
+                            <p class="class-info"><i class="fas fa-user"></i> 박코치 강사</p>
+                            <div class="class-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (42)</span>
+                            </div>
+                            <p class="class-price">70,000원 / 회</p>
+                            <button class="btn-class-detail">자세히 보기</button>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card" data-category="디자인/미술" data-location="온라인" data-type="1:1" data-level="초급">
+                        <div class="class-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="수업 이미지">
+                        </div>
+                        <div class="class-content">
+                            <h3>디지털 드로잉 기초</h3>
+                            <p class="class-info"><i class="fas fa-map-marker-alt"></i> 온라인</p>
+                            <p class="class-info"><i class="fas fa-user"></i> 이아트 강사</p>
+                            <div class="class-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.2 (56)</span>
+                            </div>
+                            <p class="class-price">45,000원 / 회</p>
+                            <button class="btn-class-detail">자세히 보기</button>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card" data-category="언어/외국어" data-location="온라인" data-type="그룹" data-level="초급">
+                        <div class="class-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="수업 이미지">
+                        </div>
+                        <div class="class-content">
+                            <h3>생활 영어 회화</h3>
+                            <p class="class-info"><i class="fas fa-map-marker-alt"></i> 온라인</p>
+                            <p class="class-info"><i class="fas fa-user"></i> 최영어 강사</p>
+                            <div class="class-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.3 (78)</span>
+                            </div>
+                            <p class="class-price">40,000원 / 회</p>
+                            <button class="btn-class-detail">자세히 보기</button>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card" data-category="공예/만들기" data-location="경기" data-type="원데이" data-level="입문">
+                        <div class="class-image">
+                            <img src="/placeholder.svg?height=200&width=300" alt="수업 이미지">
+                        </div>
+                        <div class="class-content">
+                            <h3>가죽 공예 원데이 클래스</h3>
+                            <p class="class-info"><i class="fas fa-map-marker-alt"></i> 경기 일산</p>
+                            <p class="class-info"><i class="fas fa-user"></i> 정공예 강사</p>
+                            <div class="class-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.1 (63)</span>
+                            </div>
+                            <p class="class-price">55,000원 / 회</p>
+                            <button class="btn-class-detail">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button class="btn-page active">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">3</button>
+                    <button class="btn-page">4</button>
+                    <button class="btn-page">5</button>
+                    <button class="btn-page-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="/placeholder.svg?height=40&width=120" alt="플탐 로고">
+                    <p>취미 기반 커뮤니티 및 교육 매칭 플랫폼</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="#">수업</a></li>
+                            <li><a href="#">모임</a></li>
+                            <li><a href="#">커뮤니티</a></li>
+                            <li><a href="#">일정</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>회사</h4>
+                        <ul>
+                            <li><a href="#">소개</a></li>
+                            <li><a href="#">채용</a></li>
+                            <li><a href="#">블로그</a></li>
+                            <li><a href="#">언론보도</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>지원</h4>
+                        <ul>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 플탐. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/class.js"></script>
+    <script>
+        // 헤더 로드
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                    
+                    // 헤더 스크립트 로드
+                    const script = document.createElement('script');
+                    script.src = 'js/header.js';
+                    document.body.appendChild(script);
+                });
+        });
+    </script>
+</body>
+</html>

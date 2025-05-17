@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모임 - 플탐</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/moim.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 포함 -->
+    <div id="header-container"></div>
+    
+    <main>
+        <!-- 모임 배너 -->
+        <section class="moim-banner">
+            <div class="container">
+                <h1>나에게 맞는 모임 찾기</h1>
+                <p>같은 관심사를 가진 사람들과 함께 취미를 즐겨보세요.</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="찾고 싶은 모임을 검색해보세요">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 필터 섹션 -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>카테고리</label>
+                        <select id="categoryFilter">
+                            <option value="">전체</option>
+                            <option value="운동/스포츠">운동/스포츠</option>
+                            <option value="아웃도어/여행">아웃도어/여행</option>
+                            <option value="음악/악기">음악/악기</option>
+                            <option value="언어/외국어">언어/외국어</option>
+                            <option value="공예/만들기">공예/만들기</option>
+                            <option value="요리/제빵">요리/제빵</option>
+                            <option value="문화/예술">문화/예술</option>
+                            <option value="사진/영상">사진/영상</option>
+                            <option value="디자인/미술">디자인/미술</option>
+                            <option value="직무/커리어">직무/커리어</option>
+                            <option value="컴퓨터/IT">컴퓨터/IT</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>지역</label>
+                        <select id="locationFilter">
+                            <option value="">전체</option>
+                            <option value="서울">서울</option>
+                            <option value="경기">경기</option>
+                            <option value="인천">인천</option>
+                            <option value="부산">부산</option>
+                            <option value="대구">대구</option>
+                            <option value="대전">대전</option>
+                            <option value="광주">광주</option>
+                            <option value="온라인">온라인</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>모임 형태</label>
+                        <select id="typeFilter">
+                            <option value="">전체</option>
+                            <option value="정기모임">정기모임</option>
+                            <option value="원데이">원데이</option>
+                            <option value="소규모">소규모</option>
+                            <option value="대규모">대규모</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>요일</label>
+                        <select id="dayFilter">
+                            <option value="">전체</option>
+                            <option value="평일">평일</option>
+                            <option value="주말">주말</option>
+                        </select>
+                    </div>
+                    <button class="btn-filter-apply">적용</button>
+                </div>
+                
+                <div class="filter-tags" id="filterTags">
+                    <!-- 선택된 필터 태그가 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- 모임 목록 -->
+        <section class="moim-list-section">
+            <div class="container">
+                <div class="moim-header">
+                    <h2>모임 목록</h2>
+                    <div class="moim-sort">
+                        <label>정렬:</label>
+                        <select id="sortOption">
+                            <option value="recommended">추천순</option>
+                            <option value="popular">인기순</option>
+                            <option value="recent">최신순</option>
+                            <option value="members">회원 많은순</option>
+                            <option value="rating">평점순</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="moim-grid" id="moimGrid">
+                    <!-- 모임 카드는 JavaScript로 동적 생성됩니다 -->
+                </div>
+                
+                <div class="pagination" id="pagination">
+                    <!-- 페이지네이션은 JavaScript로 동적 생성됩니다 -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- 모임 생성 버튼 -->
+        <div class="create-moim-button" id="createMoimButton">
+            <button class="btn-create-moim">
+                <i class="fas fa-plus"></i>
+                <span>모임 만들기</span>
+            </button>
+        </div>
+        
+        <!-- 모임 생성 모달 -->
+        <div id="createMoimModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>모임 만들기</h2>
+                <form class="create-moim-form">
+                    <div class="form-group">
+                        <label for="moimTitle">모임 이름</label>
+                        <input type="text" id="moimTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="moimCategory">카테고리</label>
+                        <select id="moimCategory" required>
+                            <option value="">카테고리 선택</option>
+                            <option value="운동/스포츠">운동/스포츠</option>
+                            <option value="아웃도어/여행">아웃도어/여행</option>
+                            <option value="음악/악기">음악/악기</option>
+                            <option value="언어/외국어">언어/외국어</option>
+                            <option value="공예/만들기">공예/만들기</option>
+                            <option value="요리/제빵">요리/제빵</option>
+                            <option value="문화/예술">문화/예술</option>
+                            <option value="사진/영상">사진/영상</option>
+                            <option value="디자인/미술">디자인/미술</option>
+                            <option value="직무/커리어">직무/커리어</option>
+                            <option value="컴퓨터/IT">컴퓨터/IT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="moimLocation">지역</label>
+                        <select id="moimLocation" required>
+                            <option value="">지역 선택</option>
+                            <option value="서울">서울</option>
+                            <option value="경기">경기</option>
+                            <option value="인천">인천</option>
+                            <option value="부산">부산</option>
+                            <option value="대구">대구</option>
+                            <option value="대전">대전</option>
+                            <option value="광주">광주</option>
+                            <option value="온라인">온라인</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="moimType">모임 형태</label>
+                        <select id="moimType" required>
+                            <option value="">모임 형태 선택</option>
+                            <option value="정기모임">정기모임</option>
+                            <option value="원데이">원데이</option>
+                            <option value="소규모">소규모</option>
+                            <option value="대규모">대규모</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="moimDescription">모임 소개</label>
+                        <textarea id="moimDescription" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="moimImage">대표 이미지</label>
+                        <input type="file" id="moimImage" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn-submit">모임 만들기</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 푸터 포함 -->
+    <div id="footer-container"></div>
+    
+    <script src="js/moim.js"></script>
+    <script>
+        // 헤더와 푸터 로드
+        document.addEventListener('DOMContentLoaded', function() {
+            // 헤더 로드
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                    
+                    // 헤더 스크립트 로드
+                    const headerScript = document.createElement('script');
+                    headerScript.src = 'js/header.js';
+                    document.body.appendChild(headerScript);
+                });
+                
+            // 푸터 로드
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

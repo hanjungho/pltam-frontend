@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모임 상세 - 플탐</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/moim-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 포함 -->
+    <div id="header-container"></div>
+    
+    <main>
+        <div class="container">
+            <!-- 모임 상세 정보 -->
+            <section class="moim-detail">
+                <div class="moim-header">
+                    <div class="moim-category">아웃도어/여행</div>
+                    <h1 class="moim-title">서울 등산 동호회</h1>
+                    <div class="moim-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>회원 120명</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>서울 전역</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>주 1회 모임 (주말)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="moim-content">
+                    <div class="moim-images">
+                        <div class="main-image">
+                            <img src="/placeholder.svg?height=400&width=800" alt="서울 등산 동호회" id="mainImage">
+                        </div>
+                        <div class="thumbnail-images">
+                            <img src="/placeholder.svg?height=100&width=150" alt="등산 모임 1" class="thumbnail active" data-src="/placeholder.svg?height=400&width=800">
+                            <img src="/placeholder.svg?height=100&width=150" alt="등산 모임 2" class="thumbnail" data-src="/placeholder.svg?height=400&width=800&text=Image2">
+                            <img src="/placeholder.svg?height=100&width=150" alt="등산 모임 3" class="thumbnail" data-src="/placeholder.svg?height=400&width=800&text=Image3">
+                            <img src="/placeholder.svg?height=100&width=150" alt="등산 모임 4" class="thumbnail" data-src="/placeholder.svg?height=400&width=800&text=Image4">
+                        </div>
+                    </div>
+                    
+                    <div class="moim-info">
+                        <div class="moim-description">
+                            <h2>모임 소개</h2>
+                            <p>주말마다 서울 근교의 산을 함께 오르는 등산 동호회입니다. 초보자부터 경험자까지 모두 환영합니다. 함께 건강한 취미 생활을 즐기며 아름다운 자연을 만끽해보세요.</p>
+                            
+                            <h3>이런 분들을 환영합니다</h3>
+                            <ul>
+                                <li>등산을 좋아하거나 시작하고 싶은 분</li>
+                                <li>주말에 활동적인 취미를 즐기고 싶은 분</li>
+                                <li>새로운 사람들과 교류하며 친목을 쌓고 싶은 분</li>
+                                <li>자연 속에서 스트레스를 해소하고 싶은 분</li>
+                            </ul>
+                            
+                            <h3>모임 활동</h3>
+                            <ul>
+                                <li>매주 토요일 또는 일요일 서울 근교 산 등반</li>
+                                <li>월 1회 정기 모임 (식사 및 친목)</li>
+                                <li>분기별 1회 1박 2일 원정 등산</li>
+                                <li>등산 장비 및 기술 공유</li>
+                            </ul>
+                            
+                            <h3>참여 방법</h3>
+                            <p>모임 가입 후 카카오톡 오픈채팅방에 초대해 드립니다. 매주 등산 일정은 오픈채팅방을 통해 공지되며, 참여 희망 시 댓글로 신청하시면 됩니다.</p>
+                        </div>
+                        
+                        <div class="moim-leader">
+                            <h2>모임장 소개</h2>
+                            <div class="leader-profile">
+                                <img src="/placeholder.svg?height=80&width=80" alt="모임장" class="leader-image">
+                                <div class="leader-info">
+                                    <h3>김산악</h3>
+                                    <p>등산 경력 10년 / 국내 100대 명산 80곳 등반</p>
+                                </div>
+                            </div>
+                            <p class="leader-message">안녕하세요! 서울 등산 동호회 모임장 김산악입니다. 저는 10년 동안 등산을 즐겨왔으며, 국내 100대 명산 중 80곳을 다녀왔습니다. 등산은 단순한 운동이 아닌 자연과 교감하는 소중한 시간이라고 생각합니다. 초보자부터 경험자까지 모두가 즐겁게 참여할 수 있는 모임을 만들기 위해 노력하고 있으니, 많은 관심과 참여 부탁드립니다!</p>
+                        </div>
+                        
+                        <div class="moim-actions">
+                            <button class="btn-join" id="btnJoin">가입하기</button>
+                            <button class="btn-wishlist" id="btnWishlist">
+                                <i class="far fa-heart"></i> 관심 모임
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 모임 내용 탭 -->
+            <section class="moim-content-tabs">
+                <div class="content-tabs">
+                    <button class="content-tab active" data-tab="schedule">일정</button>
+                    <button class="content-tab" data-tab="members">회원</button>
+                    <button class="content-tab" data-tab="gallery">갤러리</button>
+                    <button class="content-tab" data-tab="board">게시판</button>
+                    <button class="content-tab" data-tab="reviews">후기</button>
+                </div>
+                
+                <!-- 일정 탭 -->
+                <div class="tab-content active" id="scheduleTab">
+                    <div class="tab-header">
+                        <h2>모임 일정</h2>
+                        <div class="tab-actions">
+                            <select id="scheduleFilter">
+                                <option value="upcoming">예정된 일정</option>
+                                <option value="past">지난 일정</option>
+                                <option value="all">전체 일정</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-list">
+                        <div class="schedule-item upcoming">
+                            <div class="schedule-date">
+                                <div class="date-month">10월</div>
+                                <div class="date-day">28</div>
+                                <div class="date-weekday">토</div>
+                            </div>
+                            <div class="schedule-info">
+                                <h3>북한산 등산</h3>
+                                <div class="schedule-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>오전 8:00 - 오후 4:00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>북한산 국립공원 (우이동 입구 집결)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-user-friends"></i>
+                                        <span>참여 인원: 15/20명</span>
+                                    </div>
+                                </div>
+                                <p class="schedule-description">북한산 백운대 코스로 등산합니다. 중급 난이도이며, 점심 도시락과 충분한 물을 준비해주세요. 등산화 필수입니다.</p>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn-participate">참여하기</button>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item upcoming">
+                            <div class="schedule-date">
+                                <div class="date-month">11월</div>
+                                <div class="date-day">4</div>
+                                <div class="date-weekday">토</div>
+                            </div>
+                            <div class="schedule-info">
+                                <h3>관악산 등산</h3>
+                                <div class="schedule-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>오전 9:00 - 오후 3:00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>관악산 입구 (서울대 정문 앞 집결)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-user-friends"></i>
+                                        <span>참여 인원: 8/20명</span>
+                                    </div>
+                                </div>
+                                <p class="schedule-description">관악산 연주대 코스로 등산합니다. 초급~중급 난이도로 초보자도 참여 가능합니다. 등산 후 간단한 뒤풀이가 있을 예정입니다.</p>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn-participate">참여하기</button>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item past">
+                            <div class="schedule-date">
+                                <div class="date-month">10월</div>
+                                <div class="date-day">14</div>
+                                <div class="date-weekday">토</div>
+                            </div>
+                            <div class="schedule-info">
+                                <h3>도봉산 등산</h3>
+                                <div class="schedule-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>오전 8:30 - 오후 3:30</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>도봉산역 1번 출구 앞</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-user-friends"></i>
+                                        <span>참여 인원: 18명</span>
+                                    </div>
+                                </div>
+                                <p class="schedule-description">도봉산 자운봉 코스로 등산했습니다. 날씨가 좋아 정상에서 서울 전경을 감상할 수 있었습니다.</p>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn-view-photos">사진 보기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 회원 탭 -->
+                <div class="tab-content" id="membersTab">
+                    <div class="tab-header">
+                        <h2>모임 회원</h2>
+                        <div class="tab-actions">
+                            <input type="text" placeholder="회원 검색" id="memberSearch">
+                        </div>
+                    </div>
+                    
+                    <div class="members-grid">
+                        <div class="member-card leader">
+                            <div class="member-badge">모임장</div>
+                            <img src="/placeholder.svg?height=100&width=100" alt="김산악" class="member-image">
+                            <h3 class="member-name">김산악</h3>
+                            <p class="member-info">가입일: 2020년 5월</p>
+                            <p class="member-activity">활동: 85회</p>
+                        </div>
+                        
+                        <div class="member-card manager">
+                            <div class="member-badge">운영진</div>
+                            <img src="/placeholder.svg?height=100&width=100" alt="이등산" class="member-image">
+                            <h3 class="member-name">이등산</h3>
+                            <p class="member-info">가입일: 2020년 8월</p>
+                            <p class="member-activity">활동: 78회</p>
+                        </div>
+                        
+                        <div class="member-card manager">
+                            <div class="member-badge">운영진</div>
+                            <img src="/placeholder.svg?height=100&width=100" alt="박트레킹" class="member-image">
+                            <h3 class="member-name">박트레킹</h3>
+                            <p class="member-info">가입일: 2021년 2월</p>
+                            <p class="member-activity">활동: 65회</p>
+                        </div>
+                        
+                        <div class="member-card">
+                            <img src="/placeholder.svg?height=100&width=100" alt="최하이킹" class="member-image">
+                            <h3 class="member-name">최하이킹</h3>
+                            <p class="member-info">가입일: 2021년 5월</p>
+                            <p class="member-activity">활동: 52회</p>
+                        </div>
+                        
+                        <div class="member-card">
+                            <img src="/placeholder.svg?height=100&width=100" alt="정산책" class="member-image">
+                            <h3 class="member-name">정산책</h3>
+                            <p class="member-info">가입일: 2021년 9월</p>
+                            <p class="member-activity">활동: 48회</p>
+                        </div>
+                        
+                        <div class="member-card">
+                            <img src="/placeholder.svg?height=100&width=100" alt="강백팩" class="member-image">
+                            <h3 class="member-name">강백팩</h3>
+                            <p class="member-info">가입일: 2022년 1월</p>
+                            <p class="member-activity">활동: 35회</p>
+                        </div>
+                        
+                        <div class="member-card">
+                            <img src="/placeholder.svg?height=100&width=100" alt="조아웃도어" class="member-image">
+                            <h3 class="member-name">조아웃도어</h3>
+                            <p class="member-info">가입일: 2022년 4월</p>
+                            <p class="member-activity">활동: 28회</p>
+                        </div>
+                        
+                        <div class="member-card">
+                            <img src="/placeholder.svg?height=100&width=100" alt="윤등반" class="member-image">
+                            <h3 class="member-name">윤등반</h3>
+                            <p class="member-info">가입일: 2022년 7월</p>
+                            <p class="member-activity">활동: 22회</p>
+                        </div>
+                    </div>
+                    
+                    <div class="members-pagination">
+                        <button class="btn-page active">1</button>
+                        <button class="btn-page">2</button>
+                        <button class="btn-page">3</button>
+                        <button class="btn-page-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 갤러리 탭 -->
+                <div class="tab-content" id="galleryTab">
+                    <div class="tab-header">
+                        <h2>모임 갤러리</h2>
+                        <div class="tab-actions">
+                            <select id="galleryFilter">
+                                <option value="recent">최신순</option>
+                                <option value="popular">인기순</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>북한산 정상</h3>
+                                <p>2023년 9월 30일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 24</span>
+                                    <span><i class="far fa-comment"></i> 8</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>도봉산 단체 사진</h3>
+                                <p>2023년 10월 14일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 32</span>
+                                    <span><i class="far fa-comment"></i> 12</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>관악산 일출</h3>
+                                <p>2023년 9월 16일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 45</span>
+                                    <span><i class="far fa-comment"></i> 15</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>청계산 단풍</h3>
+                                <p>2023년 10월 7일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 38</span>
+                                    <span><i class="far fa-comment"></i> 10</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>북한산 계곡</h3>
+                                <p>2023년 8월 19일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 29</span>
+                                    <span><i class="far fa-comment"></i> 7</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>도봉산 바위</h3>
+                                <p>2023년 10월 14일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 18</span>
+                                    <span><i class="far fa-comment"></i> 5</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>수락산 전망</h3>
+                                <p>2023년 9월 2일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 22</span>
+                                    <span><i class="far fa-comment"></i> 6</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="/placeholder.svg?height=200&width=300" alt="등산 사진" class="gallery-image">
+                            <div class="gallery-info">
+                                <h3>불암산 정상</h3>
+                                <p>2023년 8월 26일</p>
+                                <div class="gallery-stats">
+                                    <span><i class="far fa-heart"></i> 27</span>
+                                    <span><i class="far fa-comment"></i> 9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-pagination">
+                        <button class="btn-page active">1</button>
+                        <button class="btn-page">2</button>
+                        <button class="btn-page">3</button>
+                        <button class="btn-page-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 게시판 탭 -->
+                <div class="tab-content" id="boardTab">
+                    <div class="tab-header">
+                        <h2>모임 게시판</h2>
+                        <div class="tab-actions">
+                            <button class="btn-write-post">글쓰기</button>
+                        </div>
+                    </div>
+                    
+                    <div class="board-list">
+                        <div class="board-item notice">
+                            <div class="board-badge">공지</div>
+                            <div class="board-info">
+                                <h3 class="board-title">10월 등산 일정 안내</h3>
+                                <div class="board-meta">
+                                    <span class="board-author">김산악 (모임장)</span>
+                                    <span class="board-date">2023년 10월 1일</span>
+                                </div>
+                            </div>
+                            <div class="board-stats">
+                                <span><i class="far fa-eye"></i> 118</span>
+                                <span><i class="far fa-comment"></i> 15</span>
+                            </div>
+                        </div>
+                        
+                        <div class="board-item">
+                            <div class="board-info">
+                                <h3 class="board-title">등산화 추천 부탁드립니다</h3>
+                                <div class="board-meta">
+                                    <span class="board-author">최하이킹</span>
+                                    <span class="board-date">2023년 10월 15일</span>
+                                </div>
+                            </div>
+                            <div class="board-stats">
+                                <span><i class="far fa-eye"></i> 87</span>
+                                <span><i class="far fa-comment"></i> 12</span>
+                            </div>
+                        </div>
+                        
+                        <div class="board-item">
+                            <div class="board-info">
+                                <h3 class="board-title">도봉산 등산 후기 및 사진</h3>
+                                <div class="board-meta">
+                                    <span class="board-author">이등산</span>
+                                    <span class="board-date">2023년 10월 14일</span>
+                                </div>
+                            </div>
+                            <div class="board-stats">
+                                <span><i class="far fa-eye"></i> 95</span>
+                                <span><i class="far fa-comment"></i> 8</span>
+                            </div>
+                        </div>
+                        
+                        <div class="board-item">
+                            <div class="board-info">
+                                <h3 class="board-title">등산 배낭 추천 및 리뷰</h3>
+                                <div class="board-meta">
+                                    <span class="board-author">강백팩</span>
+                                    <span class="board-date">2023년 10월 12일</span>
+                                </div>
+                            </div>
+                            <div class="board-stats">
+                                <span><i class="far fa-eye"></i> 76</span>
+                                <span><i class="far fa-comment"></i> 10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="board-item">
+                            <div class="board-info">
+                                <h3 class="board-title">가을 단풍 명소 추천</h3>
+                                <div class="board-meta">
+                                    <span class="board-author">박트레킹</span>
+                                    <span class="board-date">2023년 10월 10일</span>
+                                </div>
+                            </div>
+                            <div class="board-stats">
+                                <span><i class="far fa-eye"></i> 102</span>
+                                <span><i class="far fa-comment"></i> 14</span>
+                            </div>
+                        </div>
+                        
+                        <div class="board-item">
+                            <div class="board-info">
+                                <h3 class="board-title">등산 초보자 준비물 체크리스트</h3>
+                                <div class="board-meta">
+                                    <span class="board-author">정산책</span>
+                                    <span class="board-date">2023년 10월 8일</span>
+                                </div>
+                            </div>
+                            <div class="board-stats">
+                                <span><i class="far fa-eye"></i> 124</span>
+                                <span><i class="far fa-comment"></i> 18</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="board-pagination">
+                        <button class="btn-page active">1</button>
+                        <button class="btn-page">2</button>
+                        <button class="btn-page">3</button>
+                        <button class="btn-page-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 후기 탭 -->
+                <div class="tab-content" id="reviewsTab">
+                    <div class="tab-header">
+                        <h2>모임 후기</h2>
+                        <div class="tab-actions">
+                            <select id="reviewSort">
+                                <option value="recent">최신순</option>
+                                <option value="rating">평점순</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <img src="/placeholder.svg?height=40&width=40" alt="리뷰어" class="reviewer-image">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-name">홍길동</div>
+                                    <div class="review-date">2023년 10월 16일</div>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>5.0</span>
